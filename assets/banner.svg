@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="220" viewBox="0 0 1000 220" fill="none" role="img" aria-label="StillMi">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1000" y2="220" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#070B14"/>
+      <stop offset="0.5" stop-color="#0A1120"/>
+      <stop offset="1" stop-color="#070B14"/>
+    </linearGradient>
+
+    <linearGradient id="title" x1="200" y1="80" x2="800" y2="130" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#70A5FD"/>
+      <stop offset="0.5" stop-color="#A78BFA"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+
+    <linearGradient id="rule" x1="330" y1="0" x2="670" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#70A5FD" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#A78BFA" stop-opacity="0.75"/>
+      <stop offset="1" stop-color="#22D3EE" stop-opacity="0"/>
+    </linearGradient>
+
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#4C7DF0" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#4C7DF0" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="glow" x="-30%" y="-120%" width="160%" height="340%">
+      <feGaussianBlur stdDeviation="7" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- width starts at full so the title survives if SMIL never runs -->
+    <clipPath id="wipe">
+      <rect x="0" y="0" width="1000" height="220">
+        <animate attributeName="width" from="0" to="1000" dur="1.2s" begin="0.15s" fill="freeze"
+                 calcMode="spline" keySplines="0.22 0.61 0.36 1" keyTimes="0;1"/>
+      </rect>
+    </clipPath>
+
+    <style>
+      @keyframes breathe { 0%,100% { opacity:.7 } 50% { opacity:1 } }
+      @keyframes rise    { 0% { opacity:0; transform:translateY(8px) } 100% { opacity:1; transform:translateY(0) } }
+      .halo { animation: breathe 9s ease-in-out infinite; }
+      .sub  { animation: rise .9s ease-out 1.2s both; }
+    </style>
+  </defs>
+
+  <rect width="1000" height="220" fill="url(#bg)"/>
+  <g class="halo"><ellipse cx="500" cy="112" rx="330" ry="120" fill="url(#halo)"/></g>
+
+  <text x="500" y="118" text-anchor="middle"
+        font-family="Segoe UI, Arial, Helvetica, sans-serif" font-size="82" font-weight="600"
+        letter-spacing="6" fill="#FFFFFF" opacity="0.04">StillMi</text>
+
+  <g clip-path="url(#wipe)">
+    <text x="500" y="118" text-anchor="middle"
+          font-family="Segoe UI, Arial, Helvetica, sans-serif" font-size="82" font-weight="600"
+          letter-spacing="6" fill="url(#title)" filter="url(#glow)">StillMi</text>
+  </g>
+
+  <text class="sub" x="500" y="156" text-anchor="middle"
+        font-family="Consolas, 'Courier New', monospace" font-size="13"
+        letter-spacing="4.5" fill="#8FA6C8">ANDROID · KERNEL · REVERSE · PATCH</text>
+
+  <rect x="330" y="180" width="340" height="1" fill="url(#rule)"/>
+</svg>
